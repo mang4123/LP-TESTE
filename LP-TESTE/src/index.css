@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    /* Sintropia Orange Primary */
+    --primary: 22 85% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 22 85% 95%;
+    
+    /* Sintropia Orange Secondary */
+    --secondary: 28 80% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 28 60% 95%;
+
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 210 100% 95%;
+    --accent-foreground: 210 100% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 22 85% 58%;
+
+    /* Custom Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(22 85% 58%), hsl(22 85% 68%));
+    --gradient-secondary: linear-gradient(135deg, hsl(28 80% 65%), hsl(28 75% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(22 85% 58%) 0%, hsl(28 80% 65%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 98%), hsl(220 15% 96%));
+    
+    /* Smooth Section Transitions */
+    --gradient-section-1: linear-gradient(180deg, hsl(0 0% 99.5%) 0%, hsl(220 8% 99%) 100%);
+    --gradient-section-video: linear-gradient(180deg, hsl(220 8% 99%) 0%, hsl(220 8% 99%) 100%);
+    --gradient-section-2: linear-gradient(180deg, hsl(220 8% 99%) 0%, hsl(220 8% 98.5%) 100%);
+    --gradient-section-3: linear-gradient(180deg, hsl(220 8% 98.5%) 0%, hsl(22 15% 99%) 100%);
+    --gradient-section-4: linear-gradient(180deg, hsl(22 15% 99%) 0%, hsl(28 12% 99%) 100%);
+    --gradient-section-5: linear-gradient(180deg, hsl(28 12% 99%) 0%, hsl(220 8% 98.8%) 100%);
+    --gradient-section-6: linear-gradient(180deg, hsl(220 8% 98.8%) 0%, hsl(0 0% 99.2%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(22 85% 58% / 0.08);
+    --shadow-medium: 0 8px 25px -5px hsl(22 85% 58% / 0.15);
+    --shadow-strong: 0 20px 40px -12px hsl(22 85% 58% / 0.25);
+    --shadow-glow: 0 0 40px hsl(22 85% 58% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+  
+  /* Smooth section transitions */
+  .section-transition {
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+  }
+  
+  /* Scroll-based smooth transitions */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .section-transition {
+      transition: all 2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+  }
+  
+  .section-transition::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(180deg, transparent 0%, currentColor 100%);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Section background classes */
+  .bg-section-1 { background: var(--gradient-section-1); }
+  .bg-section-video { background: var(--gradient-section-video); }
+  .bg-section-2 { background: var(--gradient-section-2); }
+  .bg-section-3 { background: var(--gradient-section-3); }
+  .bg-section-4 { background: var(--gradient-section-4); }
+  .bg-section-5 { background: var(--gradient-section-5); }
+  .bg-section-6 { background: var(--gradient-section-6); }
+  
+  /* Typography improvements for Sintropia style */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  /* Classe para títulos de destaque específicos com Unna */
+  .font-display {
+    font-family: 'Unna', serif;
+  }
+  
+  /* Classe para texto corrido com Roboto Slab */
+  .font-body {
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  .font-light {
+    font-weight: 300;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  /* Improved spacing utilities */
+  .space-y-8 > * + * {
+    margin-top: 2rem;
+  }
+  
+  .space-y-12 > * + * {
+    margin-top: 3rem;
+  }
+  
+  .space-y-16 > * + * {
+    margin-top: 4rem;
+  }
+  
+  .space-y-20 > * + * {
+    margin-top: 5rem;
+  }
+  
+  /* Essential animations only */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  @keyframes levitate {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+  }
+  
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-6px) translateX(2px); }
+    75% { transform: translateY(-3px) translateX(-2px); }
+  }
+  
+  @keyframes fade-float {
+    0%, 100% { transform: translateY(0px); opacity: 0.4; }
+    50% { transform: translateY(-10px); opacity: 0.7; }
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% { transform: translateY(0px) scale(1); filter: brightness(1); }
+    50% { transform: translateY(-5px) scale(1.05); filter: brightness(1.2); }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-4px) rotate(-1deg); }
+  }
+  
+  @keyframes particle {
+    0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-15px) scale(1.2); opacity: 0.8; }
+  }
+  
+  @keyframes gentle-glow {
+    0%, 100% { box-shadow: 0 4px 20px hsl(var(--primary) / 0.1); }
+    50% { box-shadow: 0 8px 25px hsl(var(--primary) / 0.2); }
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .animate-levitate {
+    animation: levitate 6s ease-in-out infinite;
+  }
+  
+  .animate-float-medium {
+    animation: float-medium 5s ease-in-out infinite;
+  }
+  
+  .animate-fade-float {
+    animation: fade-float 7s ease-in-out infinite;
+  }
+  
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+  
+  .animate-particle {
+    animation: particle 3s ease-in-out infinite;
+  }
+  
+  .animate-gentle-glow:hover {
+    animation: gentle-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+  
+  /* Glassmorphism effects */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-orange {
+    background: rgba(234, 132, 63, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(234, 132, 63, 0.2);
+    box-shadow: 0 8px 32px rgba(234, 132, 63, 0.1);
+  }
+  
+  /* Floating particles background */
+  .floating-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(var(--secondary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, hsl(var(--primary) / 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Enhanced futuristic card hover effects */
+  .futuristic-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .futuristic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.2), transparent);
+    transition: left 0.6s;
+  }
+  
+  .futuristic-card:hover::before {
+    left: 100%;
+  }
+  
+  .futuristic-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 165, 0, 0.4);
+    border-color: rgba(255, 165, 0, 0.5);
+  }
+  
+  /* Enhanced button hover effects */
+  .btn-futuristic {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-futuristic::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    transition: all 0.6s;
+    transform: translate(-50%, -50%);
+  }
+  
+  .btn-futuristic:hover::after {
+    width: 300px;
+    height: 300px;
+  }
+  
+  /* Enhanced glass hover effects */
+  .glass:hover {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 165, 0, 0.3);
+    transform: translateY(-4px);
+  }
+  
+  .glass-orange:hover {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 165, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(255, 165, 0, 0.2);
+  }
+  
+  /* Typography Classes */
+  .font-unna {
+    font-family: 'Unna', serif;
+  }
+  
+  .font-roboto-slab {
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  /* Apply typography to headings */
+  h1, .text-5xl, .text-6xl, .text-7xl {
+    font-family: 'Unna', serif;
+    font-weight: 700;
+  }
+  
+  h2, .text-3xl, .text-4xl {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+  }
+  
+  h3, .text-2xl {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+  }
+
+
+/* Custom floating animations for background images */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) translateX(5px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-5px) translateX(-5px) rotate(-3deg);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05) rotate(1deg);
+  }
+}
+
+/* Premium animations with #aeb5fc color */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(174, 181, 252, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(174, 181, 252, 0.6), 0 0 30px rgba(174, 181, 252, 0.4);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  33% {
+    transform: translateY(-3px) scale(1.02);
+  }
+  66% {
+    transform: translateY(2px) scale(0.98);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03) rotate(0.5deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(174, 181, 252, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(174, 181, 252, 0.5), 0 0 35px rgba(174, 181, 252, 0.3);
+    transform: scale(1.01);
+  }
+}
+
+@keyframes subtle-glow {
+  0%, 100% {
+    box-shadow: 0 0 3px rgba(174, 181, 252, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(174, 181, 252, 0.3), 0 0 25px rgba(174, 181, 252, 0.2);
+  }
+}
